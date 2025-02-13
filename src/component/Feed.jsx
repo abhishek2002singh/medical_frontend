@@ -75,7 +75,7 @@ const MedantaLanding = () => {
               <img src={doctor.img} alt={doctor.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-md" />
               <p className="text-xl font-bold">{doctor.name}</p>
               <p className="text-gray-600">{doctor.specialty}</p>
-              <Link to="/app/appointment">
+              <Link to="/app/appointment" state={{ doctorName: doctor.name ,doctorSpe:doctor.specialty }}>
                 <button className="bg-green-600 text-white px-4 py-2 rounded mt-3 hover:bg-green-700 transition">
                   Book Appointment
                 </button>

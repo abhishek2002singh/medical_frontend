@@ -1,54 +1,66 @@
 import { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/Constant";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addAppointment } from "../utils/appointmentSlice";
 
-
 const Appointment = () => {
+  const location = useLocation();
+
+  const doctorName = location.state?.doctorName || "";
+  const doctorSpe = location.state?.doctorSpe || "";
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     age: "",
     gender: "",
-    doctorName: "",
-    disease: "",
+    doctorName: doctorName,
+    disease: doctorSpe,
     mobileNumber: "",
+    date: "",
   });
-  const [check ,setcheck]=useState(false)
 
+  const [check, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const dispatch = useDispatch()
-  const checktoken = useSelector((state)=>state.aptoken)
-  console.log(checktoken)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const checkToken = useSelector((state) => state.aptoken);
+
+  console.log(checkToken);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
     setMessage("");
 
     try {
-        const response = await axios.post(
-            BASE_URL+"/appointment",
-            formData, // Send formData correctly
-            {
-              withCredentials: true, // Allow cookies to be sent
-            }
-          );
-        // const response = await axios.post(`${BASE_URL}/appointment`, {}, { withCredentials: true });
-        //   console.log("API URL:", BASE_URL + "/appointment");
-
+      const response = await axios.post(
+        `${BASE_URL}/appointment`,
+        formData,
+        { withCredentials: true }
+      );
 
       setMessage(response.data.message);
-      dispatch(addAppointment(response.data))
-      setcheck(true)
-      setFormData({ firstName: "", lastName: "", age: "", gender: "", doctorName: "", disease: "", mobileNumber: "" });
+      dispatch(addAppointment(response.data));
+      setCheck(true);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        age: "",
+        gender: "",
+        doctorName: "",
+        disease: "",
+        mobileNumber: "",
+        date: "",
+      });
+
+      // Redirect to get token page after successful booking
+      navigate("/app/gettoken");
     } catch (error) {
       setMessage("Error booking appointment. Please try again.");
     } finally {
@@ -58,10 +70,12 @@ const Appointment = () => {
 
   return (
     <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md mt-40">
-      <h2 className="text-2xl font-semibold text-center mb-4">Book an Appointment</h2>
+      <h2 className="text-2xl font-semibold text-center mb-4">
+        Book an Appointment
+      </h2>
       {message && <p className="text-center text-green-600 mb-4">{message}</p>}
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
+
+      <div className="space-y-4">
         <div className="flex gap-4">
           <input
             type="text"
@@ -137,25 +151,24 @@ const Appointment = () => {
           required
         />
 
-       
+        {/* Calendar Input for Appointment Date */}
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          className="w-full p-2 border rounded-md"
+          required
+        />
 
         <button
-          type="submit"
+          onClick={handleSubmit}
           className="w-full p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
           disabled={loading}
         >
           {loading ? "Booking..." : "Book Appointment"}
         </button>
-        
-      </form>
-{check && <div>
-    <Link to='/app/gettoken'>
-        <div className="bg-green-600 w-40 text-center text-white mx-auto px-3 py-3 rounded mt-8  hover:bg-green-700 transition">
-            <h4>Click To See Your Token </h4>
-        </div>
-        </Link>
-</div>}
-
+      </div>
     </div>
   );
 };
