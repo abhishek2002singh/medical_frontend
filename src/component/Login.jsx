@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/Constant";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -135,6 +135,28 @@ const Login = () => {
           </p>
         </div>
       </section>
+      <div className="flex space-x-4 mt-6 ">
+        <Link to='/adminLogin'>
+        <button
+          className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition duration-300"
+        >
+          Admin Panel
+        </button>
+        </Link>
+        <Link to='/doctorLogin'>
+        <button
+          className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300"
+        >
+          Doctor Panel
+        </button>
+        </Link>
+        <button
+          onClick={() => navigate("/login")}
+          className="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition duration-300"
+        >
+          Appointment
+        </button>
+        </ div>
     </div>
   );
 };

@@ -24,6 +24,17 @@ import Contact from './component/information/Contact'
 import Services from './component/Services'
 import Abouts from './component/Abouts'
 
+import Payment from './component/Payment'
+import AdminLogin from './component/credencialInformation/AdminLogin'
+import AdminDashboard from './component/credencialInformation/AdminDashboard'
+import AddDoctor from './component/credencialInformation/AddDoctor'
+import AdminBody from './component/credencialInformation/AdminBody'
+import DoctorHandler from './component/doctor/DoctorHandler'
+import DoctorLogin from './component/doctor/DoctorLogin'
+import Doctor from './component/doctor/Doctor'
+import DoctorDetailsPage from './component/doctor/DoctorDetailsPage'
+
+
 function App() {
 
   // const dispatch = useDispatch();
@@ -55,11 +66,36 @@ function App() {
         <Route path="/" element={<PreHandler />} />
         <Route path="login" element={<Login />} />
 
+        {/* //admin router */}
+        <Route path="adminLogin" element={<AdminLogin />} />
+
+        <Route path="/admin" element={<AdminBody />}>
+        <Route index element={<AdminDashboard />} /> Default child
+        <Route path="addDoctor" element={<AddDoctor />} />
+        
+        
+       
+       </Route>
+
+       {/* Doctor router */}
+
+       <Route path="doctorLogin" element={<DoctorLogin />} />
+
+        <Route path="/doctor" element={<DoctorHandler />}>
+        <Route index element={<Doctor />} /> Default child
+        <Route path="/doctor" element={<Doctor />} />
+        <Route path="/doctor/datails/:doctorId" element={<DoctorDetailsPage />} />
+        
+        
+       </Route>
+
+        
+
         {/* Main app routes */}
         <Route path="/app" element={<Body />}>
           <Route index element={<Feed />} /> Default child
           
-           <Route path="appointment" element={<Appointment />} />
+           <Route path="appointment/:doctorId" element={<Appointment />} />
           <Route path="gettoken" element={<Gettoken />} />
           <Route path="checkup" element={<Checkup />} />
           <Route path="getcheckup" element={<Getcheckup />} />
@@ -73,6 +109,8 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="Services" element={<Services />} />
           <Route path="Abouts" element={<Abouts />} /> 
+          
+          <Route path="payment" element={<Payment />} />
         </Route>
       </Routes>
     </BrowserRouter>

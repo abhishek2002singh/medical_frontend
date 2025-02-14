@@ -2,11 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/Constant";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const GetToken = () => {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const checkToken = useSelector((state) => state.aptoken);
+  console.log(checkToken?.appointment?._id)
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -87,6 +90,8 @@ const GetToken = () => {
            
          </button>
       </Link>
+
+
     </div>
   );
 };
