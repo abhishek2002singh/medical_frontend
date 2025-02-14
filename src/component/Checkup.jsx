@@ -1,17 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/Constant";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 const Checkup = () => {
+
+  const location= useLocation();
+  const navigate = useNavigate();
+  const desesesName = location.state.fname
+  console.log(desesesName)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     age: "",
     gender: "",
     refDoctor: "",
-    scanningPart: "",
+    scanningPart: desesesName,
     mobileNumber: "",
   });
 
@@ -43,6 +48,7 @@ const Checkup = () => {
       setMessage(response.data.message);
       setcheck(true)
       setFormData({ firstName: "", lastName: "", age: "", gender: "", refDoctor: "", scanningPart: "", mobileNumber: "" });
+      navigate('/app/getcheckup')
     } catch (error) {
       setMessage("Error booking appointment. Please try again.");
     } finally {
@@ -142,13 +148,7 @@ const Checkup = () => {
         </button>
         
       </form>
-      {check && <div>
-    <Link to='/app/gettoken'>
-        <div className="bg-green-600 w-40 text-center text-white mx-auto px-3 py-3 rounded mt-8  hover:bg-green-700 transition">
-            <h4>Click To See Your Token </h4>
-        </div>
-        </Link>
-</div>}
+
     </div>
   );
 };

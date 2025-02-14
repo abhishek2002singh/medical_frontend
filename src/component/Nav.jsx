@@ -37,12 +37,15 @@ const Nav = () => {
     <nav className="bg-white text-black p-4 shadow-lg fixed w-full top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo & Brand Name */}
+       
         <div className="flex items-center gap-3">
+        <Link to="/app" className="text-2xl font-bold text-blue-700">
           <img
             src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/February2024/fokL3D8sSOClOGRzJX3UEKuFHDGMeZ-metaQ3liZXItS25pZmVfNTE0eDQwMC5wbmc=-.png"
             alt="Logo"
             className="h-12 w-12 rounded-full"
           />
+          </Link>
           <Link to="/app" className="text-2xl font-bold text-blue-700">
             MedCare
           </Link>

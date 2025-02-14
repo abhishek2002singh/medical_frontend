@@ -23,6 +23,7 @@ import Jobs from './component/information/Jobs'
 import Contact from './component/information/Contact'
 import Services from './component/Services'
 import Abouts from './component/Abouts'
+import { MdSignalWifiOff } from 'react-icons/md';
 
 import Payment from './component/Payment'
 import AdminLogin from './component/credencialInformation/AdminLogin'
@@ -33,9 +34,33 @@ import DoctorHandler from './component/doctor/DoctorHandler'
 import DoctorLogin from './component/doctor/DoctorLogin'
 import Doctor from './component/doctor/Doctor'
 import DoctorDetailsPage from './component/doctor/DoctorDetailsPage'
+import useOnlineStatus from './component/hooks/useOnlineStatus'
+import Shimmer from './component/Shimmer'
+
+
+
 
 
 function App() {
+  const onlinestatus= useOnlineStatus()
+
+  if (!onlinestatus) {
+    return (
+      <div className="fixed top-0 left-0 w-full bg-red-600 text-white text-center py-4 flex items-center justify-center space-x-4 z-50">
+        {/* Offline Icon */}
+        <MdSignalWifiOff size={50} className="text-white" />
+        <div>
+          <h1 className="text-2xl font-semibold">
+            Looks like you are offline.
+          </h1>
+          <p className="mt-2 text-lg">
+            Please check your internet connection.
+          </p>
+        </div>
+      </div>
+    );
+  }
+  
 
   // const dispatch = useDispatch();
   // const token = localStorage.getItem("token");
@@ -111,6 +136,7 @@ function App() {
           <Route path="Abouts" element={<Abouts />} /> 
           
           <Route path="payment" element={<Payment />} />
+          <Route path="shimmer" element={<Shimmer />} />
         </Route>
       </Routes>
     </BrowserRouter>

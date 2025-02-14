@@ -71,19 +71,38 @@ const Prelogin = () => {
           Our Top Doctors
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { name: "Dr. John Doe", specialty: "World’s Best Cardiologist", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdSGVuStFxj_Dnv9V9qlzkor22IRPIglGkVA&s" },
-            { name: "Dr. Emily Smith", specialty: "Top Neurosurgeon", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRat5jcIguFJnh7MRuk07c5mghNy_sVYwQedw&s" },
-          ].map((doctor, index) => (
-            <div key={index} className="bg-white p-5 rounded-lg shadow-md flex items-center transform hover:scale-105 transition duration-300 ">
-              <img src={doctor.img} alt={doctor.name} className="rounded-full" />
-              <div className="ml-4">
-                <h3 className="text-xl font-bold text-gray-700 ">{doctor.name}</h3>
-                <p className="text-gray-500">{doctor.specialty}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+  {[
+    {
+      name: "Dr. John Doe",
+      specialty: "World’s Best Cardiologist",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdSGVuStFxj_Dnv9V9qlzkor22IRPIglGkVA&s",
+    },
+    {
+      name: "Dr. Emily Smith",
+      specialty: "Top Neurosurgeon",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRat5jcIguFJnh7MRuk07c5mghNy_sVYwQedw&s",
+    },
+  ].map((doctor, index) => (
+    <div
+      key={index}
+      className="bg-white p-5 rounded-lg shadow-md flex flex-col md:flex-row items-center text-center md:text-left transform hover:scale-105 transition duration-300"
+    >
+      {/* Doctor Image */}
+      <img
+        src={doctor.img}
+        alt={doctor.name}
+        className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover"
+      />
+
+      {/* Doctor Info */}
+      <div className="mt-3 md:mt-0 md:ml-4">
+        <h3 className="text-xl font-bold text-gray-700">{doctor.name}</h3>
+        <p className="text-gray-500">{doctor.specialty}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
       </section>
 
       {/* Why Choose Us Section */}

@@ -99,40 +99,10 @@ const MedantaLanding = () => {
       </Link>
       </div>
 
-      
-
-      {/* Specialities Section */}
-      <div className="py-8">
-        <h2 className="text-3xl font-bold text-center mb-6">Our Specialities</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6">
-          {[
-            { name: "Cardiac Care", img: "https://medanta.s3.ap-south-1.amazonaws.com/spacialities/January2024/iTfnXswt8SpCvU8prfkOIaqeQ8dFSU-metaQ2FyZGlhYyBDYXJlLnBuZw==-.png" },
-            { name: "Cancer Care", img: "https://medanta.s3.ap-south-1.amazonaws.com/spacialities/January2024/8dlSvHvAt4XLA06qCA1bD7WD3a2Dlh-metaQ2FuY2VyIGNhcmUucG5n-.png" },
-            { name: "ENT (Ear, Nose, Throat)" ,img:"https://medanta.s3.ap-south-1.amazonaws.com/spacialities/January2024/DlLPYNoYXC4dIXhYJ3qxLpDPX9aSNv-metaRU5ULCBIZWFkICYgTmVjayBTdXJnZXJ5LnBuZw==-.png" },
-            { name: "Renal Care"  ,img:"https://medanta.s3.ap-south-1.amazonaws.com/spacialities/January2024/eTl9efu2E24Ovx5HB8iubKwLR5o66k-metacmVuYWwgY2FyZSBncmV5LnBuZw==-.png" } 
-          ].map((speciality, index) => (
-            <div key={index} className="bg-white shadow-md p-4 rounded-lg text-center hover:bg-gray-100 transition">
-              {speciality.img && <img src={speciality.img} alt={speciality.name} className="w-16 mx-auto mb-2" />}
-              <p className="font-semibold">{speciality.name}</p>
-              <button className="text-blue-600 hover:text-blue-800 transition">Know More</button>
-              <br />
-              <Link to='/app/appointment'>
-              <button className="bg-green-600 text-white px-3 py-1 rounded mt-2 hover:bg-green-700 transition">
-                Book Appointment
-              </button>
-              </Link>
-            </div>
-          ))}
-        </div>
-        <Link to='/app/specialitiesPages'>
-        <div className="bg-green-600 w-40 text-center text-white mx-auto px-3 py-3 rounded mt-8  hover:bg-green-700 transition">
-            <h4>See More ....</h4>
-        </div>
-        </Link>
-      </div>
 
 
-      {/* Medical Checkups Section */}
+
+            {/* Medical Checkups Section */}
 <div className="py-8">
   <h2 className="text-3xl font-bold text-center mb-6">Medical Checkups</h2>
   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6">
@@ -160,6 +130,37 @@ const MedantaLanding = () => {
   </Link>
 </div>
 
+      
+
+      {/* Specialities Section */}
+      <div className="py-8">
+        <h2 className="text-3xl font-bold text-center mb-6">Our Specialities</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6">
+          {[
+            { name: "Cardiac Care", img: "https://medanta.s3.ap-south-1.amazonaws.com/spacialities/January2024/iTfnXswt8SpCvU8prfkOIaqeQ8dFSU-metaQ2FyZGlhYyBDYXJlLnBuZw==-.png" },
+            { name: "Cancer Care", img: "https://medanta.s3.ap-south-1.amazonaws.com/spacialities/January2024/8dlSvHvAt4XLA06qCA1bD7WD3a2Dlh-metaQ2FuY2VyIGNhcmUucG5n-.png" },
+            { name: "ENT (Ear, Nose, Throat)" ,img:"https://medanta.s3.ap-south-1.amazonaws.com/spacialities/January2024/DlLPYNoYXC4dIXhYJ3qxLpDPX9aSNv-metaRU5ULCBIZWFkICYgTmVjayBTdXJnZXJ5LnBuZw==-.png" },
+            { name: "Renal Care"  ,img:"https://medanta.s3.ap-south-1.amazonaws.com/spacialities/January2024/eTl9efu2E24Ovx5HB8iubKwLR5o66k-metacmVuYWwgY2FyZSBncmV5LnBuZw==-.png" } 
+          ].map((speciality, index) => (
+            <div key={index} className="bg-white shadow-md p-4 rounded-lg text-center hover:bg-gray-100 transition">
+              {speciality.img && <img src={speciality.img} alt={speciality.name} className="w-16 mx-auto mb-2" />}
+              <p className="font-semibold">{speciality.name}</p>
+              <button className="text-blue-600 hover:text-blue-800 transition">Know More</button>
+              <br />
+              {/* <Link to='/app/appointment'>
+              <button className="bg-green-600 text-white px-3 py-1 rounded mt-2 hover:bg-green-700 transition">
+                Book Appointment
+              </button>
+              </Link> */}
+            </div>
+          ))}
+        </div>
+        <Link to='/app/specialitiesPages'>
+        <div className="bg-green-600 w-40 text-center text-white mx-auto px-3 py-3 rounded mt-8  hover:bg-green-700 transition">
+            <h4>See More ....</h4>
+        </div>
+        </Link>
+      </div>
 
 
       {/* Patient Reviews Section */}

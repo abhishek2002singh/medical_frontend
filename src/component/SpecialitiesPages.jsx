@@ -22,15 +22,15 @@ const SpecialitiesPages = () => {
               <p className="font-semibold">{speciality.name}</p>
               <button className="text-blue-600 hover:text-blue-800 transition">Know More</button>
               <br />
-              <Link to='/app/appointment'>
-              <button className="bg-green-600 text-white px-3 py-1 rounded mt-2 hover:bg-green-700 transition">
-                Book Appointment
-              </button>
-              </Link>
+              
             </div>
           ))}
         </div>
-        
+        <Link to='/app'>
+                <div className="bg-green-600 w-40 text-center text-white mx-auto px-3 py-3 rounded mt-8  hover:bg-green-700 transition">
+                  <h4>Home Page ....</h4>
+                </div>
+                </Link>
       </div>
     </div>
   )
