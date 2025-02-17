@@ -17,9 +17,9 @@ const Profile = () => {
           <p><strong>Mobile:</strong> {userInfo.mobileNumber}</p>
           <p><strong>Gender:</strong> {userInfo.gender}</p>
           <div>
-          <Link to='/app/edit-profile'>
+          <Link to='/app'>
         <div className="bg-green-600 w-auto text-center text-white mx-auto px-3 py-3 rounded mt-8  hover:bg-green-700 transition">
-            <h4>EDIT PROFILE ...</h4>
+            <h4>Home Page ...</h4>
         </div>
         </Link>
           </div>

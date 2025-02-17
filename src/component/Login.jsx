@@ -126,7 +126,9 @@ const Login = () => {
             onClick={isSignup ? handleSignup : handleLogin}
           >
             {loading ? "Processing..." : isSignup ? "Sign Up" : "Login"}
+            
           </button>
+          
           <p className="text-sm">
             {isSignup ? "Already have an account?" : "Don't have an account?"}
             <button className="text-blue-500 font-semibold ml-1" onClick={() => setIsSignup(!isSignup)}>

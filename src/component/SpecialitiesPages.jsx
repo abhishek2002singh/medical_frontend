@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import ShimmerCheckupsPage from "../component/shimmer/ShimmerCheckupsPage";
 
 const SpecialitiesPages = () => {
+  const [loading, setLoading] = useState(true);
+
+   useEffect(() => {
+      setTimeout(() => setLoading(false), 2000); // Simulating API call
+    }, []);
+
+    if (loading) {
+      return <ShimmerCheckupsPage />;
+    }
+
   return (
     <div>
               <div className="py-32">

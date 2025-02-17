@@ -36,6 +36,7 @@ import Doctor from './component/doctor/Doctor'
 import DoctorDetailsPage from './component/doctor/DoctorDetailsPage'
 import useOnlineStatus from './component/hooks/useOnlineStatus'
 import Shimmer from './component/Shimmer'
+import ShimmerLogin from './component/ShimmerLogin'
 
 
 
@@ -137,6 +138,7 @@ function App() {
           
           <Route path="payment" element={<Payment />} />
           <Route path="shimmer" element={<Shimmer />} />
+          <Route path="shimmerLogin" element={<ShimmerLogin />} />
         </Route>
       </Routes>
     </BrowserRouter>

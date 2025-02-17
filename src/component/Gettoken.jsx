@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/Constant";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ShimmerGetToken from "../component/shimmer/ShimmerGetToken";
 
 const GetToken = () => {
   const [appointments, setAppointments] = useState([]);
@@ -39,7 +40,7 @@ const GetToken = () => {
 
   console.log(appointments?.length)
 
-  if (loading) return <p className="text-center text-gray-500">Loading...</p>;
+  if (loading) return <p className="text-center text-gray-500"><ShimmerGetToken /></p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (

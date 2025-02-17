@@ -79,7 +79,7 @@ const Nav = () => {
                   <Link to="/app/profile" className="block px-4 py-2 hover:bg-gray-100">
                     Profile
                   </Link>
-                  <Link to="/Appointment" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Book Appointment</Link>
+                  {/* <Link to="/app/appointment" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Book Appointment</Link> */}
                   
                   <Link to='/'>
                   <button
@@ -124,8 +124,8 @@ const Nav = () => {
 
               {token && userInfo ? (
                 <>
-                  <Link to="/profile" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Profile</Link>.
-                  <Link to="/Appointment" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Book Appointment</Link>
+                  <Link to="/app/profile" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Profile</Link>.
+                  {/* <Link to="/app/Appointment" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Book Appointment</Link> */}
                   
                   <Link to='/'>
                   <button
