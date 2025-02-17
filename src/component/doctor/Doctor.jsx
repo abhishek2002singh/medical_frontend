@@ -10,7 +10,7 @@ const Doctor = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get("http://localhost:7777"+"/doctors"); // Update API URL if needed
+        const response = await axios.get("https://medical-backend-y6pm.onrender.com"+"/doctors"); // Update API URL if needed
         setDoctors(response.data);
         setFilteredDoctors(response.data);
         console.log(response.data)

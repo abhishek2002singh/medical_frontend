@@ -19,7 +19,7 @@ const AddDoctor = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:7777"+"/add-doctor", formData);
+      const response = await axios.post("https://medical-backend-y6pm.onrender.com"+"/add-doctor", formData);
       toast.success(response.data.message);
       setFormData({ firstName: "", lastName: "", photoUrl: "", specialty: "" });
     } catch (error) {

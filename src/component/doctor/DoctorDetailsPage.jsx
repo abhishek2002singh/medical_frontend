@@ -15,7 +15,7 @@ console.log(appointmentId)
   useEffect(() => {
     const fetchDoctorDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:7777/doctors/${doctorId}`);
+        const response = await axios.get(`https://medical-backend-y6pm.onrender.com/doctors/${doctorId}`);
         setDoctor(response.data);
       } catch (error) {
         console.error("Error fetching doctor details:", error);
@@ -29,7 +29,7 @@ console.log(appointmentId)
     if (doctor && doctor[0]?.patients?.length > 0) {
       doctor[0].patients.forEach(async (patient) => {
         try {
-          const response = await axios.get(`http://localhost:7777/appointments/${patient.patientId}`);
+          const response = await axios.get(`https://medical-backend-y6pm.onrender.com/appointments/${patient.patientId}`);
           setAppointments((prev) => ({
             ...prev,
             [patient.patientId]: response.data,
