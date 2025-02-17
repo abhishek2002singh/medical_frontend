@@ -11,17 +11,21 @@ const DoctorPage = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/doctors`);
+        console.log("Fetching doctors from:", `${BASE_URL}/doctors`);
+        const res = await axios.get(`${BASE_URL}/doctors`, { withCredentials: true });
+        console.log("Doctors fetched:", res.data); // Log response
         setDoctors(res.data);
       } catch (error) {
-        console.error("Error fetching doctors:", error);
+        console.error("Error fetching doctors:", error.response?.data || error.message);
       } finally {
-        setLoading(false); // Stop loading after data is fetched
+        setLoading(false);
       }
     };
-
+  
     fetchDoctors();
   }, []);
+  
+  
 
   return (
     <div className="py-32">

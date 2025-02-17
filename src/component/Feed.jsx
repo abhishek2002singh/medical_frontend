@@ -13,6 +13,7 @@ const MedantaLanding = () => {
       try {
         const res = await axios.get(`${BASE_URL}/doctors`);
         setDoctors(res.data.slice(0, 2)); // Only show the first two doctors
+        console.log(res.data)
       } catch (error) {
         console.error("Error fetching doctors:", error);
       }
