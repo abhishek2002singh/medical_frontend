@@ -1,1 +1,1 @@
-export const BASE_URL="https://medical-backend-y6pm.onrender.com"
+export const BASE_URL="https://medical-backend-xq9c.onrender.com"
