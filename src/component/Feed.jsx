@@ -116,7 +116,7 @@ const MedantaLanding = () => {
       <div key={index} className="bg-white shadow-md p-4 rounded-lg text-center hover:bg-gray-100 transition">
         {test.img && <img src={test.img} alt={test.name} className="w-32 bg-cover mx-auto mb-2" />}
         <p className="font-semibold">{test.name}</p>
-        <Link to='/app/checkup'>
+        <Link to='/app/checkup'  state={{ fname: test.name }}>
           <button className="bg-green-600 text-white px-3 py-1 rounded mt-2  hover:bg-green-700 transition">
             Book Test
           </button>

@@ -1,23 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/Constant";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addAppointment } from "../utils/appointmentSlice";
-import {addDoctor} from '../utils/doctorSlice'
-import { addPatient } from '../utils/patientSlice'
+import { addDoctor } from "../utils/doctorSlice";
+import { addPatient } from "../utils/patientSlice";
 
 const Appointment = () => {
   const location = useLocation();
-   const dispatch= useDispatch();
-  
-  // const param = useParams()
-  
+  const dispatch = useDispatch();
+
   const doctorName = location.state?.doctorName || "";
   const doctorSpe = location.state?.doctorSpe || "";
-  const doctorId = location.state?.doctorId
-  console.log(doctorId)
-  dispatch(addDoctor(doctorId))
+  const doctorId = location.state?.doctorId;
+  console.log(doctorId);
+
+  // ✅ Dispatch inside useEffect to prevent render-time state updates
+  useEffect(() => {
+    if (doctorId) {
+      dispatch(addDoctor(doctorId));
+    }
+  }, [doctorId, dispatch]);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -32,7 +37,6 @@ const Appointment = () => {
   const [check, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const checkToken = useSelector((state) => state.aptoken);
 
@@ -53,7 +57,7 @@ const Appointment = () => {
 
       setMessage(response.data.message);
       dispatch(addAppointment(response.data));
-      dispatch(addPatient(response.data.appointment._id))
+      dispatch(addPatient(response.data.appointment._id));
       localStorage.setItem("appointmentId", response.data.appointment._id);
 
       setCheck(true);
@@ -68,10 +72,9 @@ const Appointment = () => {
         date: "",
       });
 
-      // Redirect to video call page after successful booking
-      // navigate(`/app/video/${response.data.appointment._id      }`);
-      navigate('/app/payment')
-      console.log(response.data.appointment._id)
+      // Navigate after successful booking
+      navigate("/app/payment");
+      console.log(response.data.appointment._id);
     } catch (error) {
       setMessage("Error booking appointment. Please try again.");
     } finally {
